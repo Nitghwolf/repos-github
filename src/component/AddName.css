@@ -45,11 +45,19 @@
     }
 }
 
-h2 {
+h2{
   font-family: "Damion", cursive;
   font-weight: 400;
-  color: #4caf50;
+  color: #d5941c;
   font-size: 35px;
+  text-align: center;
+  position: relative;
+}
+h3{
+  font-family: "Damion", cursive;
+  font-weight: 400;
+  color: #d5941c;
+  font-size: 30px;
   text-align: center;
   position: relative;
 }
@@ -58,9 +66,9 @@ h2:before {
   content: "";
   width: 100%;
   left: 0;
-  top: 22px;
-  background: #4caf50;
-  height: 1px;
+  top: 65px;
+  background: #d5941c;
+  height: 2px;
 }
 h2 i {
   font-style: normal;

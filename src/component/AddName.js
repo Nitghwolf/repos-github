@@ -29,7 +29,7 @@ function AddName({onSend}){
     return(
         <div className="col-3 input-effect">
             <form className="addNameForm" onSubmit={submitHandler}>
-                    <input {...input.bind} className="effect-20" type="text" placeholder="Введите имя"/>
+                    <input {...input.bind} className="effect-20" type="text" placeholder="Введите ник"/>
                     <span className="focus-border">
                     <i></i>
                 </span>

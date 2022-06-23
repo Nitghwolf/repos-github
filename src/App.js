@@ -25,6 +25,7 @@ function App() {
       const apiUrl = `https://api.github.com/users/${name}/repos`;
       axios.get(apiUrl).then((repos) => {
         const allRepos = repos.data;
+        console.log(allRepos);
         setAppState({ loading: false, repos: allRepos });
       });
   }
@@ -34,7 +35,7 @@ function App() {
       <div className='container'>
         <h1>Репозитории GitHub</h1>
       </div>
-      <AddName onSend={addName}/>
+        <AddName onSend={addName} />
       <div className='repo-container'>
         <ListLoading isLoading={appState.loading} repos={appState.repos} />
       </div>
