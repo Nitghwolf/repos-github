@@ -1,0 +1,171 @@
+.addNameForm{
+    margin-bottom: 1.2rem;
+}
+
+:root {
+    --background-color: #ffe5e5;
+    --color: #000000;
+    --feedback-bg-color: #ffffff;
+    --feedback-secondary-color: #ffacac;
+    --feedback-primary-color: #53488d;
+    --feedback-icon-color: #ffffff;
+    --feedback-form-input: #f4f4f4;
+}
+  
+.center-content, .submit-feedback, .addNameForm {
+    display: grid;
+    place-content: center;
+}
+  
+.submit-feedback {
+    padding: 10px 30px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 7px;
+    border-bottom-left-radius: 0;
+    background-color: var(--feedback-secondary-color);
+    color: var(--feedback-primary-color);
+    transition: all 0.3s;
+
+}
+.submit-feedback:hover {
+    border-radius: 0px;
+    color: var(--feedback-primary-color);
+    background-color: var(--background-color);
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffacac' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    animation: animatedBackground 5s linear infinite alternate;
+}
+  
+@keyframes animatedBackground {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 0;
+    }
+}
+
+h2 {
+  font-family: "Damion", cursive;
+  font-weight: 400;
+  color: #4caf50;
+  font-size: 35px;
+  text-align: center;
+  position: relative;
+}
+h2:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  left: 0;
+  top: 22px;
+  background: #4caf50;
+  height: 1px;
+}
+h2 i {
+  font-style: normal;
+  background: #fff;
+  position: relative;
+  padding: 10px;
+}
+:focus {
+  outline: none;
+}
+
+/* necessary to give position: relative to parent. */
+input[type="text"] {
+  font: 15px/24px "Muli", sans-serif;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+}
+
+:focus {
+  outline: none;
+}
+
+.col-3 {
+  float: left;
+  width: 27.33%;
+  margin: 20px 3%;
+  position: relative;
+}
+
+input[type="text"] {
+  font: 15px/24px "Lato", Arial, sans-serif;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+}
+
+.effect-20{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+
+.effect-20 ~ .focus-border:before,
+.effect-20 ~ .focus-border:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4caf50;
+  transition: 0.3s;
+}
+.effect-20 ~ .focus-border:after {
+  top: auto;
+  bottom: 0;
+  left: auto;
+  right: 0;
+}
+.effect-20 ~ .focus-border i:before,
+.effect-20 ~ .focus-border i:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
+  background-color: #4caf50;
+  transition: 0.4s;
+}
+.effect-20 ~ .focus-border i:after {
+  left: auto;
+  right: 0;
+  top: auto;
+  bottom: 0;
+}
+.effect-20:focus ~ .focus-border:before,
+.effect-20:focus ~ .focus-border:after,
+.has-content.effect-20 ~ .focus-border:before,
+.has-content.effect-20 ~ .focus-border:after {
+  width: 100%;
+  transition: 0.3s;
+}
+.effect-20:focus ~ .focus-border i:before,
+.effect-20:focus ~ .focus-border i:after,
+.has-content.effect-20 ~ .focus-border i:before,
+.has-content.effect-20 ~ .focus-border i:after {
+  height: 100%;
+  transition: 0.4s;
+}
+
+::-moz-placeholder {
+  color: #cbd0d5;
+}
+
+:-ms-input-placeholder {
+  color: #cbd0d5;
+}
+
+::placeholder {
+  color: #cbd0d5;
+}
+
+
