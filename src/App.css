@@ -17,7 +17,8 @@
   flex-direction: row;
 }
 .container h1{
-  font-size: 50px;
+  margin: 0;
+  font-size: 2.5em;
   text-align: center;
   color: var(--basic-color);
 }
@@ -66,7 +67,6 @@ a[target="_blank"] {
 }
 
 .div-avatar{
-  /* position: absolute; */
   width: 150px;
   height: 150px;
   left: 20%;

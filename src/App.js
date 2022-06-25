@@ -4,12 +4,24 @@ import './App.css';
 import List from './component/List';
 import withListLoading from './component/withListLoading';
 import AddName from './component/AddName';
+import NavBar from './component/NavBar';
 function App() {
   const ListLoading = withListLoading(List);
   const [appState, setAppState] = useState({
     loading: false,
     repos: null,
   });
+
+  const [name, setName] = useState("");
+  const [git_nick, setGit_nick] = useState("");
+
+  const changeInputRegister = (name) => {
+    setName(name);
+  }
+
+  function changeGit_nick(name) {
+    setGit_nick(name);
+  }
 
   useEffect(() => {
     setAppState({ loading: true });
@@ -32,6 +44,7 @@ function App() {
 
   return (
     <div className='App'>
+      <NavBar name={name} changeGit_nick={changeGit_nick} changeInputRegister={changeInputRegister}/>
       <div className='container'>
         <h1>Репозитории GitHub</h1>
       </div>
