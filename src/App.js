@@ -10,6 +10,7 @@ function App() {
   const [appState, setAppState] = useState({
     loading: false,
     repos: null,
+    nick: ""
   });
 
   const [name, setName] = useState("");
@@ -21,15 +22,16 @@ function App() {
 
   function changeGit_nick(name) {
     setGit_nick(name);
+    setAppState({nick: name})
   }
 
   useEffect(() => {
-    setAppState({ loading: true });
-    const apiUrl = `https://api.github.com/users/Nitghwolf/repos`;
-    axios.get(apiUrl).then((repos) => {
-      const allRepos = repos.data;
-      setAppState({ loading: false, repos: allRepos });
-    });
+      setAppState({ loading: true });
+      const apiUrl = `https://api.github.com/users/${git_nick}/repos`;
+      axios.get(apiUrl).then((repos) => {
+        const allRepos = repos.data;
+        setAppState({ loading: false, repos: allRepos, nick:git_nick });
+      });
   }, [setAppState]);
 
   function addName(name){

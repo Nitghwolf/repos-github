@@ -1,17 +1,25 @@
 import React, { useState, setState } from "react";
+import Login from "./forms/Login";
 import Registration from "./forms/Registrtion";
 import "./NavBar.css";
 
 function  NavBar({name, changeInputRegister, changeGit_nick}){
  
     const [isOpenRegistr, setIsOpenRegistr] = useState(false);
+    const [isOpenLogin, setIsOpenLogin] = useState(false);
+
 
     function open() {
         setIsOpenRegistr(true);
     }
 
+    function openLogin() {
+        setIsOpenLogin(true);
+    }
+
     function close() {
         setIsOpenRegistr(false);
+        setIsOpenLogin(false);
     }
 
 
@@ -20,10 +28,12 @@ function  NavBar({name, changeInputRegister, changeGit_nick}){
                 <div className="navBar" >
                     <div>{name}</div>
                     <button  onClick={open} className="login-btn">Регистрация</button>
-                    <button className="logout-btn">Вход</button>
+                    <button onClick={openLogin} className="logout-btn">Вход</button>
                 </div>
 
                 {isOpenRegistr && (<Registration changeInputRegister={changeInputRegister} changeGit_nick={changeGit_nick}/>)}
+                
+                {isOpenLogin && (<Login changeInputRegister={changeInputRegister} changeGit_nick={changeGit_nick}/>)}
                             <button className="noselect" onClick={close}>
                                 <span className='text'>Закрыть</span>
                                 <span className="icon">
