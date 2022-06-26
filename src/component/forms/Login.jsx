@@ -4,16 +4,17 @@ import axios from 'axios';
 
 export default function Login({changeInputRegister, changeGit_nick}){
  
-    function registrationHandler(event){
+    function loginHandler(event){
         event.preventDefault();
-        axios.get("http://localhost:8080/register", {
-            git_nick: event.target.git_nick.value,
-            password: event.target.password.value,
+        axios.post("http://localhost:8080/register/login", {
+                git_nick: event.target.git_nick.value,
+                password: event.target.password.value,
+
           }).then((res) => {
             console.log(res);
-            if (res.data === "ok") {
-                // changeInputRegister(event.target.name.value);
-                changeGit_nick(event.target.git_nick.value);
+            if (res.status === 200) {
+                changeInputRegister(res.data.name);
+                changeGit_nick(res.data.git_nick);
                 event.target.reset();
             } else {
                 alert("Не верный ник или пароль");
@@ -31,7 +32,7 @@ export default function Login({changeInputRegister, changeGit_nick}){
                             Добро пожаловать
                         </h2>
                     </div>
-                    <form className="card-form"  onSubmit={registrationHandler}>
+                    <form className="card-form"  onSubmit={loginHandler}>
                         <div className="input">
                             <input type="text" className="input-field" 
                             name="git_nick" 

@@ -26,7 +26,7 @@ function  NavBar({name, changeInputRegister, changeGit_nick}){
         return(
             <div className="parentNavBar">
                 <div className="navBar" >
-                    <div>{name}</div>
+                    <div className="name">{name}</div>
                     <button  onClick={open} className="login-btn">Регистрация</button>
                     <button onClick={openLogin} className="logout-btn">Вход</button>
                 </div>

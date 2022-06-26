@@ -11,13 +11,14 @@
     z-index: 10;
 }
 
-/* .modal-body{
-    padding: 2rem;
-    width: 400px;
-    border-radius: 5px;
-    background: #fff;
-    height: 500px;
-} */
+.name{
+  font-family: "Damion", cursive;
+  color: #d5941c;
+  font-weight: 800;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+}
 
 .parentNavBar{
   width: 100%;

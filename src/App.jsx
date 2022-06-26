@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import FileSaver from 'file-saver';
+
 import './App.css';
 import List from './component/List';
 import withListLoading from './component/withListLoading';
 import AddName from './component/AddName';
 import NavBar from './component/NavBar';
+
+
 function App() {
   const ListLoading = withListLoading(List);
   const [appState, setAppState] = useState({
@@ -26,12 +30,15 @@ function App() {
   }
 
   useEffect(() => {
+    console.log(appState.nick)
+    if(name !== ""){
       setAppState({ loading: true });
-      const apiUrl = `https://api.github.com/users/${git_nick}/repos`;
+      const apiUrl = `https://api.github.com/users/${appState.nick}/repos`;
       axios.get(apiUrl).then((repos) => {
         const allRepos = repos.data;
         setAppState({ loading: false, repos: allRepos, nick:git_nick });
       });
+    }
   }, [setAppState]);
 
   function addName(name){
@@ -44,16 +51,34 @@ function App() {
       });
   }
 
+
+  // write the file
+  function saveFile(){
+    const data = [];
+    appState.repos.map(repo => {
+      const repoobj = []
+      repoobj.push(repo.name + ' -- ');
+      repoobj.push(repo.description + ' -- ');
+      repoobj.push(repo.html_url + ' ');
+      data.push(repoobj + '\n');
+    });
+    let file = new File([data.toString().replaceAll(",", "")], `${appState.repos[0].owner.login}.txt`, {type: "text/plain;charset=utf-8"});
+    FileSaver.saveAs(file);
+  }
+
+
   return (
     <div className='App'>
       <NavBar name={name} changeGit_nick={changeGit_nick} changeInputRegister={changeInputRegister}/>
       <div className='container'>
         <h1>Репозитории GitHub</h1>
+
       </div>
         <AddName onSend={addName} />
       <div className='repo-container'>
         <ListLoading isLoading={appState.loading} repos={appState.repos} />
       </div>
+      {(appState.repos && (<button onClick={saveFile} className="submit-feedback">Save</button>))}
       <footer>
         <div className='footer'>
           Built with by Andrey Volkov
