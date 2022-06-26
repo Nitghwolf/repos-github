@@ -1,4 +1,6 @@
 import React from 'react';
+import Loader from "./Loader";
+
 
 function WithListLoading(Component) {
   return function WihLoadingComponent({ isLoading, ...props }) {
@@ -6,6 +8,7 @@ function WithListLoading(Component) {
     return (
       <p style={{ textAlign: 'center', fontSize: '30px' }}>
         Hold on, fetching data may take some time :)
+        <Loader />
       </p>
     );
   };

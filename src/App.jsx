@@ -30,7 +30,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(appState.nick)
     if(name !== ""){
       setAppState({ loading: true });
       const apiUrl = `https://api.github.com/users/${appState.nick}/repos`;
@@ -46,7 +45,7 @@ function App() {
       const apiUrl = `https://api.github.com/users/${name}/repos`;
       axios.get(apiUrl).then((repos) => {
         const allRepos = repos.data;
-        console.log(allRepos);
+        // console.log(allRepos);
         setAppState({ loading: false, repos: allRepos });
       });
   }
@@ -62,6 +61,8 @@ function App() {
       repoobj.push(repo.html_url + ' ');
       data.push(repoobj + '\n');
     });
+    console.log(appState.repos.length)
+    console.log(name)
     let file = new File([data.toString().replaceAll(",", "")], `${appState.repos[0].owner.login}.txt`, {type: "text/plain;charset=utf-8"});
     FileSaver.saveAs(file);
   }
@@ -78,7 +79,7 @@ function App() {
       <div className='repo-container'>
         <ListLoading isLoading={appState.loading} repos={appState.repos} />
       </div>
-      {(appState.repos && (<button onClick={saveFile} className="submit-feedback">Save</button>))}
+      {((appState.repos) && (name !== "") && (<button onClick={saveFile} className="submit-feedback">Save</button>))}
       <footer>
         <div className='footer'>
           Built with by Andrey Volkov
