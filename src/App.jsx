@@ -7,6 +7,7 @@ import List from './component/List';
 import withListLoading from './component/withListLoading';
 import AddName from './component/AddName';
 import NavBar from './component/NavBar';
+import StarsBack from './component/background/StarsBack';
 
 
 function App() {
@@ -30,22 +31,14 @@ function App() {
   }
 
   useEffect(() => {
-    if(name !== ""){
-      setAppState({ loading: true });
-      const apiUrl = `https://api.github.com/users/${appState.nick}/repos`;
-      axios.get(apiUrl).then((repos) => {
-        const allRepos = repos.data;
-        setAppState({ loading: false, repos: allRepos, nick:git_nick });
-      });
-    }
-  }, [setAppState]);
+    addName(git_nick)
+  }, [git_nick]);
 
   function addName(name){
       setAppState({ loading: true });
       const apiUrl = `https://api.github.com/users/${name}/repos`;
       axios.get(apiUrl).then((repos) => {
         const allRepos = repos.data;
-        // console.log(allRepos);
         setAppState({ loading: false, repos: allRepos });
       });
   }
@@ -61,8 +54,6 @@ function App() {
       repoobj.push(repo.html_url + ' ');
       data.push(repoobj + '\n');
     });
-    console.log(appState.repos.length)
-    console.log(name)
     let file = new File([data.toString().replaceAll(",", "")], `${appState.repos[0].owner.login}.txt`, {type: "text/plain;charset=utf-8"});
     FileSaver.saveAs(file);
   }
@@ -70,6 +61,7 @@ function App() {
 
   return (
     <div className='App'>
+      <StarsBack />
       <NavBar name={name} changeGit_nick={changeGit_nick} changeInputRegister={changeInputRegister}/>
       <div className='container'>
         <h1>Репозитории GitHub</h1>

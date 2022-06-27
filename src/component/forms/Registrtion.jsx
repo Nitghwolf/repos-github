@@ -12,7 +12,6 @@ export default function Registration({changeInputRegister, changeGit_nick, close
             git_nick: event.target.git_nick.value,
             password: event.target.password.value,
           }).then((res) => {
-            console.log(res);
             if (res.data === "ok") {
                 changeInputRegister(event.target.name.value);
                 changeGit_nick(event.target.git_nick.value);

@@ -10,7 +10,7 @@
   flex-direction: column;
   font-family: 'Amiri', serif;
   overflow: hidden;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
 }
 .container {
   display: flex;

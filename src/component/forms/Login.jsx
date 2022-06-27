@@ -11,8 +11,7 @@ export default function Login({changeInputRegister, changeGit_nick, close}){
                 password: event.target.password.value,
 
           }).then((res) => {
-            console.log(res);
-            if (res.status === 200) {
+            if (res.data.message) {
                 changeInputRegister(res.data.name);
                 changeGit_nick(res.data.git_nick);
                 event.target.reset();
