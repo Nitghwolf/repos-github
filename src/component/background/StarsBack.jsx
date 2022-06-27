@@ -3,7 +3,7 @@ import "./StarsBack.css"
 
 export default function StarsBack(){
     return (
-        <div class="stars">
+        <div className="stars">
   <div className="star"></div>
   <div className="star"></div>
   <div className="star"></div>

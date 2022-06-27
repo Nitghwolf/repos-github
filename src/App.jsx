@@ -31,7 +31,9 @@ function App() {
   }
 
   useEffect(() => {
-    addName(git_nick)
+    if(git_nick){
+      addName(git_nick);
+    }
   }, [git_nick]);
 
   function addName(name){
